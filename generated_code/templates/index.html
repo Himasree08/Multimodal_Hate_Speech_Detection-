@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hate Meme Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Hate Meme <span class="highlight">Detector</span></h1>
+            <p>Multimodal AI analysis using ResNet50 + RoBERTa</p>
+        </header>
+
+        <main>
+            <div class="upload-card">
+                <form id="uploadForm">
+                    <div class="drop-zone" id="dropZone">
+                        <span class="drop-zone__prompt">Drop image here or click to upload</span>
+                        <input type="file" name="image" class="drop-zone__input" id="fileInput" accept="image/*"
+                            required>
+                    </div>
+                    <div class="image-preview" id="imagePreview"></div>
+
+                    <div class="input-group">
+                        <label for="textInput">Meme Text (Optional - Leave empty for Auto-OCR)</label>
+                        <textarea id="textInput" name="text"
+                            placeholder="Enter text here, or leave empty to extract from image..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="analyzeBtn">Analyze Meme</button>
+                </form>
+            </div>
+
+            <div class="result-card hidden" id="resultCard">
+                <h2>Analysis Result</h2>
+                <div class="result-content">
+                    <div class="status-indicator" id="statusIndicator"></div>
+                    <div class="result-details">
+                        <p class="label" id="resultLabel">Pending...</p>
+                        <p class="confidence" id="resultConfidence">Confidence: --</p>
+
+                        <div id="logicBreakdown"
+                            style="margin-top: 15px; padding: 10px; background: #f0f4f8; border-radius: 8px; display: none;">
+                            <strong>Evaluation Logic Gate:</strong>
+                            <p id="imageStatus" style="margin: 5px 0;">Image: </p>
+                            <p id="textStatus" style="margin: 5px 0;">Text: </p>
+                        </div>
+
+                        <p class="extracted-text" id="resultText"
+                            style="margin-top: 10px; font-style: italic; color: #555;"></p>
+                        <p class="details" id="resultDetails" style="margin-top: 5px; font-size: 0.9rem; color: #777;">
+                        </p>
+                    </div>
+                </div>
+                <button type="button" class="btn-secondary" id="analyzeAnotherBtn"
+                    style="margin-top: 20px; width: 100%;">Analyze Another</button>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
